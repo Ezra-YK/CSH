@@ -92,45 +92,48 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // 6. CAREERS FORM API INTEGRATION (FormSubmit.co)
 const form = document.getElementById('career-form');
-const submitBtn = form.querySelector('button[type="submit"]');
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+// Safety check: Only execute if the form exists on the active page
+if (form) {
+    const submitBtn = form.querySelector('button[type="submit"]');
 
-    const formData = new FormData(form);
-    
-    // Disables the annoying FormSubmit visual captcha
-    formData.append("_captcha", "false"); 
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = "Sending...";
-    submitBtn.disabled = true;
+        const formData = new FormData(form);
+        
+        // Disables the annoying FormSubmit visual captcha
+        formData.append("_captcha", "false"); 
 
-    try {
-        // Point the fetch directly to their AJAX endpoint with your email
-        const response = await fetch("https://formsubmit.co/ajax/yashvanthyk.16@gmail.com", {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json'
-            },
-            body: formData
-        });
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
 
-        const data = await response.json();
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/yashvanthyk.16@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            });
 
-        if (response.ok) {
-            alert("Success! Application and resume sent.");
-            form.reset();
-        } else {
-            console.error("API Rejected:", data);
-            alert("Error: " + (data.message || "Failed to send."));
+            const data = await response.json();
+
+            if (response.ok) {
+                alert("Success! Application and resume sent.");
+                form.reset();
+            } else {
+                console.error("API Rejected:", data);
+                alert("Error: " + (data.message || "Failed to send."));
+            }
+
+        } catch (error) {
+            console.error("Network Error:", error);
+            alert("Network error. Check your connection.");
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
         }
-
-    } catch (error) {
-        console.error("Network Error:", error);
-        alert("Network error. Check your connection.");
-    } finally {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }
-});
+    });
+}
