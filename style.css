@@ -177,7 +177,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .footer-link { color: #94a3b8; text-decoration: none; font-size: 15px; display: block; margin-bottom: 12px; transition: color 0.3s; }
 .footer-link:hover { color: var(--color-primary); transform: translateX(5px); display: inline-block; }
 .contact-info { display: flex; align-items: flex-start; gap: 12px; line-height: 1.5; }
-.footer-bottom { text-align: center; color: #64748b; font-size: 14px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+.footer-bottom { text-align: center; color: ##93a9c8; font-size: 14px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 /* Locks the footer SVG icons to exactly 20px and prevents them from stretching */
 .contact-info svg { width: 20px; height: 20px; fill: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
 /* =========================================
