@@ -87,7 +87,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .mega-menu { display: none; flex-direction: column; background-color: var(--color-info-bg); border-radius: var(--radius-sm); padding: 16px; margin-top: 8px; gap: 16px; }
 .mega-menu.mobile-open { display: flex; }
 .mega-col { display: flex; flex-direction: column; gap: 8px; }
-.mega-col h4 { font-size: 14px; color: var(--color-primary); border-bottom: 1px solid var(--color-border); padding-bottom: 6px; text-transform: uppercase; }
+.mega-col .mega-heading { font-size: 13px; color: var(--color-primary); margin-bottom: 12px; text-transform: uppercase; font-weight: 800;}
 .mega-col a { color: var(--color-text-muted); text-decoration: none; font-size: 14px; padding: 6px 0; }
 
 /* Header Scrolled State (Mobile & Desktop) */
