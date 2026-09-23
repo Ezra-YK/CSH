@@ -11,7 +11,7 @@
     --color-light: #f8fafc;
     --color-border: #e2e8f0;
     --color-text-muted: #475569;
-    --color-text-light: #64748b;
+    --color-text-light: #475569;
     --color-success-bg: #ecfdf5;
     --color-info-bg: #f1f5f9;
     --color-white: #ffffff;
@@ -87,6 +87,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .mega-menu { display: none; flex-direction: column; background-color: var(--color-info-bg); border-radius: var(--radius-sm); padding: 16px; margin-top: 8px; gap: 16px; }
 .mega-menu.mobile-open { display: flex; }
 .mega-col { display: flex; flex-direction: column; gap: 8px; }
+/* REPLACE .mega-col h4 WITH THIS: */
 .mega-col .mega-heading { font-size: 13px; color: var(--color-primary); margin-bottom: 12px; text-transform: uppercase; font-weight: 800;}
 .mega-col a { color: var(--color-text-muted); text-decoration: none; font-size: 14px; padding: 6px 0; }
 
@@ -177,7 +178,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .footer-link { color: #94a3b8; text-decoration: none; font-size: 15px; display: block; margin-bottom: 12px; transition: color 0.3s; }
 .footer-link:hover { color: var(--color-primary); transform: translateX(5px); display: inline-block; }
 .contact-info { display: flex; align-items: flex-start; gap: 12px; line-height: 1.5; }
-.footer-bottom { text-align: center; color: ##93a9c8; font-size: 14px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+.footer-bottom { text-align: center; color: #94a3b8; font-size: 14px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 /* Locks the footer SVG icons to exactly 20px and prevents them from stretching */
 .contact-info svg { width: 20px; height: 20px; fill: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
 /* =========================================
@@ -224,10 +225,10 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
     .nav-link-wrapper {
         width: auto; 
         /* Stretches the hit-box downward so the mouse never hits empty space */
- 
+        padding-bottom: 24px;
     }
     
-    .mega-col h4 { background: none; margin-bottom: 12px; }
+    .mega-col .mega-heading { background: none; margin-bottom: 12px; }
     .mega-col a:hover { color: var(--color-secondary); }
     /* Shrink animations explicitly mapped for desktop */
     .header.scrolled .header-container { height: 65px; }
