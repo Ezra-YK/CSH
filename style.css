@@ -11,7 +11,7 @@
     --color-light: #f8fafc;
     --color-border: #e2e8f0;
     --color-text-muted: #475569;
-    --color-text-light: #475569;
+    --color-text-light: #475569; /* Updated for proper light mode contrast */
     --color-success-bg: #ecfdf5;
     --color-info-bg: #f1f5f9;
     --color-white: #ffffff;
@@ -35,10 +35,13 @@
     --color-text-muted: #cbd5e1; 
     --color-text-light: #94a3b8; 
     --color-border: #334155;
+    
+    /* Brightened for proper dark mode contrast */
     --color-primary: #34d399;
     --color-secondary: #60a5fa; 
-    --color-success-bg: rgba(5, 150, 105, 0.15); 
-    --color-info-bg: rgba(30, 58, 138, 0.2);
+    --color-success-bg: rgba(52, 211, 153, 0.15); 
+    --color-info-bg: rgba(96, 165, 250, 0.15);
+    
     --shadow-sm: 0px 4px 6px -1px rgba(0,0,0,0.5);
     --shadow-md: 0px 25px 50px -12px rgba(0,0,0,0.5);
 }
@@ -69,7 +72,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 
 .logo-section { display: flex; align-items: center; gap: var(--spacing-sm); text-decoration: none; color: inherit; }
 .logo-image { height: 40px; width: auto; max-width: 100px; object-fit: contain; transition: transform 0.4s ease; transform-origin: left center; }
-.logo-text h1 { font-size: clamp(14px, 3vw, 18px); font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.logo-text .logo-title { font-size: clamp(14px, 3vw, 18px); font-weight: 700; line-height: 1.2; white-space: nowrap; }
 .logo-text p { display: none; /* Hidden on mobile */ font-size: 12px; color: var(--color-text-light); font-weight: 600; }
 
 .header-actions { display: flex; align-items: center; gap: var(--spacing-md); }
@@ -87,9 +90,8 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .mega-menu { display: none; flex-direction: column; background-color: var(--color-info-bg); border-radius: var(--radius-sm); padding: 16px; margin-top: 8px; gap: 16px; }
 .mega-menu.mobile-open { display: flex; }
 .mega-col { display: flex; flex-direction: column; gap: 8px; }
-/* REPLACE .mega-col h4 WITH THIS: */
 .mega-col .mega-heading { font-size: 13px; color: var(--color-primary); margin-bottom: 12px; text-transform: uppercase; font-weight: 800;}
-.mega-col a { color: var(--color-text-muted); text-decoration: none; font-size: 14px; padding: 6px 0; }
+.mega-col a { color: var(--color-text-muted); text-decoration: none; font-size: 14px; padding: 6px 0; transition: color 0.3s; }
 
 /* Header Scrolled State (Mobile & Desktop) */
 .header.scrolled { box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1); background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
@@ -117,6 +119,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .section-container {max-width: 1280px; margin: 0 auto; padding: clamp(32px, 5vw, 48px) 20px; }
 .section-title { font-size: clamp(1.75rem, 4vw, 2.35rem); font-weight: 800; line-height: 1.2; text-align: center; margin-bottom: clamp(24px, 4vw, 32px); }
 .section-tag {color: var(--color-primary); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; margin-bottom: var(--spacing-sm); text-align: center; display: block; }
+
 /* =========================================
    COMPONENTS (Cards, Progress, Forms)
    ========================================= */
@@ -140,11 +143,15 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .value-card-icon { width: 56px; height: 56px; background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-lg); }
 .value-card-title, .service-title { font-size: 20px; font-weight: 700; margin-bottom: var(--spacing-md); }
 .value-card-desc, .service-desc { color: var(--color-text-muted); font-size: 15px; line-height: 1.65; }
+
+/* Detailed Card Styles */
 .detailed-card h3 { color: var(--color-secondary); font-size: 22px; font-weight: 800; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 2px solid var(--color-light); text-transform: uppercase; }
 .detailed-card li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 14.5px; color: var(--color-text-muted); line-height: 1.6; }
 .detailed-card li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); font-weight: 900; }
+
 /* Locks the security checkmark icon to 24px and prevents stretching */
 .security-note svg { width: 24px; height: 24px; flex-shrink: 0; }
+
 /* Single Service Inner Pages */
 .single-service-container { max-width: 1000px; margin: -40px auto 40px auto; background-color: var(--color-white); padding: clamp(24px, 5vw, 48px); border-radius: var(--radius-lg); border: 1px solid var(--color-border); box-shadow: var(--shadow-md); position: relative; z-index: 10; }
 .single-service-title { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; color: var(--color-dark); margin-bottom: 32px; padding-bottom: 24px; border-bottom: 2px dashed var(--color-border); text-transform: uppercase; }
@@ -169,18 +176,42 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .form-textarea { resize: vertical; min-height: 120px; }
 .exp-group { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
 .contact-grid { display: grid; gap: 40px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); margin-bottom: 40px; }
-.map-container { width: 100%; min-height: 400px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--color-border); }
+.map-container iframe {width: 100%;height: 100%;min-height: 400px; /* Matches the container's height */border: 0;display: block;}
 
 /* Footer */
-.footer { background-color: #020617; color: #f8fafc; padding: 60px 20px 20px; }
-.footer-title { font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 16px; text-transform: uppercase; display: flex; align-items: center; }
-.footer-title::before { content: "||"; color: var(--color-primary); margin-right: 12px; font-weight: 900; }
-.footer-link { color: #94a3b8; text-decoration: none; font-size: 15px; display: block; margin-bottom: 12px; transition: color 0.3s; }
-.footer-link:hover { color: var(--color-primary); transform: translateX(5px); display: inline-block; }
-.contact-info { display: flex; align-items: flex-start; gap: 12px; line-height: 1.5; }
+
+.footer { 
+    background-color: #020617; 
+    color: #f8fafc; 
+    padding: 60px 20px 20px; 
+}
+
+.footer-title { 
+    font-size: 16px; 
+    font-weight: 700; 
+    color: #ffffff; 
+    margin-bottom: 16px; 
+    text-transform: uppercase; 
+    display: flex; 
+    align-items: center; 
+}
+
+.footer-title::before { 
+    content: "||"; 
+    color: var(--color-primary); 
+    margin-right: 12px; 
+    font-weight: 900; 
+}
+
+/* Standard Links */
+.footer-link { color: #94a3b8; text-decoration: none; font-size: 15px; display: block; width: fit-content; margin-bottom: 12px; transition: color 0.3s, transform 0.3s; }
+.footer-link:hover { color: var(--color-primary); transform: translateX(5px); }
+/* Contact Info Override (Forces Flexbox and prevents text collapse) */
+.footer-link.contact-info { display: flex !important; align-items: flex-start !important; gap: 12px !important; }
+.footer-link.contact-info svg { width: 20px !important; height: 20px !important; fill: var(--color-primary); flex-shrink: 0 !important; margin-top: 2px; }
+.footer-link.contact-info span { display: block !important; line-height: 1.5 !important; }
 .footer-bottom { text-align: center; color: #94a3b8; font-size: 14px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
-/* Locks the footer SVG icons to exactly 20px and prevents them from stretching */
-.contact-info svg { width: 20px; height: 20px; fill: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
+.footer-text { text-align: left; font-size: 13px; color: #94a3b8; }
 /* =========================================
    DESKTOP ENHANCEMENTS (Min-Width: 1025px)
    ========================================= */
@@ -198,7 +229,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
     .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: var(--color-primary); transition: width 0.3s; }
     .nav-link:hover::after { width: 100%; }
 
-/* Desktop Hover Mega-Menu */
+    /* Desktop Hover Mega-Menu */
     .mega-menu { 
         position: absolute; 
         top: 100%; 
@@ -212,7 +243,6 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
         box-shadow: var(--shadow-md); 
         opacity: 0; 
         transition: opacity 0.3s, transform 0.3s; 
-        /* Pulls the menu visually up to overlap the wrapper's padding */
         margin-top: -24px; 
     }
     
@@ -225,10 +255,12 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
     .nav-link-wrapper {
         width: auto; 
         /* Stretches the hit-box downward so the mouse never hits empty space */
+
     }
     
     .mega-col .mega-heading { background: none; margin-bottom: 12px; }
     .mega-col a:hover { color: var(--color-secondary); }
+    
     /* Shrink animations explicitly mapped for desktop */
     .header.scrolled .header-container { height: 65px; }
     .header.scrolled .logo-image { transform: scale(0.85); }
@@ -237,7 +269,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 
     /* Logo pop-up effect */
     .logo-section:hover .logo-text { transform: translateY(-3px) scale(1.02); }
-    .logo-section:hover .logo-text h1 { color: var(--color-primary); transition: color 0.3s ease; }
+    .logo-section:hover .logo-text .logo-title { color: var(--color-primary); transition: color 0.3s ease; }
     .header.scrolled .logo-section:hover .logo-text { transform: translateY(-3px) scale(0.93); }
 
     /* Specific Desktop Grid overrides */
