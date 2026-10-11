@@ -334,7 +334,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 
 /* Restore Service & Value Card dynamic hovers */
 .value-card, .service-card, .detailed-card {
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1); border-radius: var(--radius-lg); border: 1px solid var(--color-border); background-color: var(--color-white); padding: clamp(24px, 4vw, 32px); box-shadow: var(--shadow-sm);
 }
 
 .value-card:hover, .service-card:hover, .detailed-card:hover { 
