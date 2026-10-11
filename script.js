@@ -50,17 +50,33 @@ function initializeSite() {
     });
   }
 
-  // Mobile Mega-Menu Accordion
-  const servicesDropdownBtn = document.querySelector('.with-dropdown');
-  const megaMenu = document.querySelector('.mega-menu');
-  if (servicesDropdownBtn && megaMenu) {
-    servicesDropdownBtn.addEventListener('click', (e) => {
+  // --- Mobile Mega-Menu Accordion (Fixed for multiple menus) ---
+  const dropdownToggles = document.querySelectorAll('.with-dropdown');
+
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
       if (window.innerWidth <= 1024) {
         e.preventDefault();
-        megaMenu.classList.toggle('mobile-open');
+        
+        // Find the specific mega-menu that belongs to the clicked link
+        const wrapper = toggle.closest('.nav-link-wrapper');
+        if (wrapper) {
+          const targetMegaMenu = wrapper.querySelector('.mega-menu');
+          if (targetMegaMenu) {
+            // Close any other open dropdowns first for a clean UI
+            document.querySelectorAll('.mega-menu').forEach(menu => {
+              if (menu !== targetMegaMenu) {
+                menu.classList.remove('mobile-open');
+              }
+            });
+            
+            // Toggle the one you just clicked
+            targetMegaMenu.classList.toggle('mobile-open');
+          }
+        }
       }
     });
-  }
+  });
 
   // Smart Contact Routing
   document.body.addEventListener('click', (e) => {
