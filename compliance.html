@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate and monitor statutory due dates, tax audit filings, and ROC compliance deadlines with CS Hariharan & Co LLP's engine.">
+  <title>Statutory Compliance | CS HARIHARAN & CO LLP</title>
+  <link rel="icon" type="image/png" href="/caindialogo.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Global Header Placeholder -->
+  <div id="header-placeholder"></div>
+
+  <main class="compliance-page-wrapper">
+    <div class="engine-card">
+      <div class="engine-header">
+        <h1>Statutory Compliance</h1>
+        <p>Select your entity structure and operational parameters to view active statutory deadlines.</p>
+      </div>
+
+      <div class="form-section">
+        <div class="engine-grid">
+          <div class="form-group">
+            <label for="entitySelect">Entity Type</label>
+            <select id="entitySelect" class="form-select">
+              <option value="">Select Entity Type</option>
+              <option value="Private Limited">Private Limited Company</option>
+              <option value="Public Limited">Public Limited Company</option>
+              <option value="Section 8">Section 8 Company (NGO)</option>
+              <option value="LLP">Limited Liability Partnership (LLP)</option>
+              <option value="Firm">Partnership Firm</option>
+              <option value="Individual">Individual / Sole Proprietorship</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="incDateGroup">
+            <label for="incorporationDate">Incorporation / Setup Date</label>
+            <input type="date" id="incorporationDate" class="form-input">
+          </div>
+
+          <div class="form-group" id="agmDateGroup">
+            <label for="agmDate">Last AGM Date</label>
+            <input type="date" id="agmDate" class="form-input">
+          </div>
+
+          <div class="form-group" id="auditGroup">
+            <label for="auditSelect">Tax Audit (u/s 44AB)?</label>
+            <select id="auditSelect" class="form-select">
+              <option value="No">No (Non-Audit Case)</option>
+              <option value="Yes">Yes (Accounts Audited)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <button id="btn-calc" class="btn btn-primary btn-calc" type="button">Calculate Due Dates</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="compliance-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Compliance / Form</th>
+              <th style="width: 15%;">Authority</th>
+              <th style="width: 18%;">Governing Section</th>
+              <th style="width: 20%;">Computed Deadline</th>
+              <th style="width: 22%;">Statutory Default Penalty</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

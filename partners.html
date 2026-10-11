@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners | CS HARIHARAN & CO LLP</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="section-container">
+            <h1 class="page-title" style="text-align: center; color: var(--color-secondary);">Core Team</h1>
+            
+            <div class="team-grid fade-up delay-1">
+                
+                <!-- Partner Card 1 -->
+                <div class="team-card">
+                    <img src="/arvind-profile.jpg" alt="Arvind Sethi" class="team-img">
+                    <h3 class="team-name">Arvind Sethi</h3>
+                    <button class="btn-pill" onclick="openTeamProfile('arvind')">Read More</button>
+                </div>
+
+                <!-- Partner Card 2 -->
+                <div class="team-card">
+                    <img src="/viren-profile.jpg" alt="Viren H Mehta" class="team-img">
+                    <h3 class="team-name">Viren H Mehta</h3>
+                    <button class="btn-pill" onclick="openTeamProfile('viren')">Read More</button>
+                </div>
+
+                <!-- Add more partner cards here following the same structure -->
+            </div>
+        </section>
+
+        <!-- The Beige Profile Modal -->
+        <div id="profileModal" class="modal-overlay">
+            <div class="modal-box team-modal-box">
+                <button class="modal-close" style="background: white; border: none;" onclick="closeTeamProfile()">✕</button>
+                <div id="profileModalContent">
+                    <!-- Javascript injects the detailed profile here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Global Logic -->
+    <script src="/script.js"></script>
+
+    <!-- Page Specific Partner Engine -->
+    <script>
+        // Store your partner data here
+        const partnerDatabase = {
+            'arvind': {
+                name: 'Arvind Sethi',
+                image: '/arvind-profile.jpg', // Ensure you have this image in your folder
+                qualifications: 'BA (H) Economics, CA',
+                description: 'Arvind leads the assurance practice for S. R. Batliboi. He became a member of the ICAI in 1991. He has over 35+ years of experience and has worked with a range of clients with expertise in statutory audits and financial accounting advisory services. Arvind is based in the Pune office.'
+            },
+            'viren': {
+                name: 'Viren H Mehta',
+                image: '/viren-profile.jpg',
+                qualifications: 'B.Com, FCA',
+                description: 'Viren specializes in corporate structuring and compliance with over 30 years of extensive industry experience leading complex advisory engagements.'
+            }
+        };
+
+        const modal = document.getElementById('profileModal');
+        const modalContent = document.getElementById('profileModalContent');
+
+        function openTeamProfile(partnerId) {
+            const data = partnerDatabase[partnerId];
+            if (data) {
+                modalContent.innerHTML = `
+                    <img src="${data.image}" alt="${data.name}" class="team-detail-img">
+                    <h3 class="team-detail-name">${data.name}</h3>
+                    <p class="team-detail-qual">${data.qualifications}</p>
+                    <p class="team-detail-desc">${data.description}</p>
+                `;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeTeamProfile() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeTeamProfile();
+        });
+    </script>
+</body>
+</html>

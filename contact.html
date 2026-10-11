@@ -3,44 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Read expert financial insights, tax compliance updates, and corporate advisory articles from CS Hariharan & Co LLP.">
-    <title>Contact | CS HARIHARAN & CO LLP</title>
-        <link rel="icon" type="image/png" href="/caindialogo.jpg">
+    <meta name="description" content="Contact CS Hariharan & Co LLP. Headquartered in Chennai with branches in Tindivanam, Madurai, and Bangalore.">
+    <title>Contact & Branches | CS HARIHARAN & CO LLP</title>
+    <link rel="icon" type="image/png" href="/caindialogo.jpg">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Global Header Placeholder -->
     <div id="header-placeholder"></div>
+
     <main>
         <div class="page-header fade-up">
             <h1 class="page-title">Get in Touch</h1>
             <p class="page-subtitle">Schedule a consultation or reach out to our office directly.</p>
         </div>
-        
+
         <section class="section-container">
-            <div class="contact-grid">
+            
+            <!-- TOP SECTION: Main Contact Grid -->
+            <div class="main-contact-grid fade-up delay-1">
                 
-                <!-- Left Column: Contact Cards Stacked -->
-                <div class="contact-info-stack">
-                    <div class="value-card fade-up delay-1">
-                        <h3 style="margin-bottom:16px;">Office Location</h3>
-                        <p>No.9 Malligai st,<br>Vasanthapuram,<br>Tindivanam, 604001.</p>
+                <!-- Left Column: Info Cards -->
+                <div class="contact-cards-col">
+                    <div class="value-card" style="box-shadow: none;">
+                        <h3 class="value-card-title">Office Location</h3>
+                        <p class="value-card-desc">
+                            No.9 Malligai st,<br>
+                            Vasanthapuram,<br>
+                            Tindivanam, 604001.
+                        </p>
                     </div>
-                    <div class="value-card fade-up delay-2">
-                        <h3 style="margin-bottom:16px;">Direct Contact</h3>
-                        <p><strong>Phone:</strong> +91 7010658650<br><strong>Email:</strong> caspraveenkumars@gmail.com</p>
+                    
+                    <div class="value-card" style="box-shadow: none;">
+                        <h3 class="value-card-title">Direct Contact</h3>
+                        <p class="value-card-desc" style="display: flex; flex-direction: column; gap: 4px;">
+                            <span><strong>Phone:</strong> +91 7010658650</span>
+                            <span><strong>Email:</strong> caspraveenkumars@gmail.com</span>
+                        </p>
                     </div>
                 </div>
 
-                <!-- Right Column: Map -->
-                <div class="map-container fade-up delay-3">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243.69315326160867!2d79.64093208531384!3d12.24215456859796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a53472cc7571557%3A0xc75e339cccbe0691!2sMahaperiyavaTemple%20Padasalai!5e0!3m2!1sen!2sin!4v1789301741167!5m2!1sen!2sin" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <!-- Right Column: Main Map -->
+                <div class="contact-map-col">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1639.3662361248348!2d79.64014363358424!3d12.242050814434704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a53472cc7571557%3A0xc75e339cccbe0691!2sMahaperiyavaTemple%20Padasalai!5e0!3m2!1sen!2sin!4v1791738740293!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+
+            <!-- BOTTOM SECTION: Branch Locations -->
+            <div class="locations-wrapper fade-up delay-2" style="margin-top: 100px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Our locations</h2>
+                
+                <!-- The City Tabs -->
+                <div class="location-tabs">
+                    <button class="loc-tab-btn active" onclick="openLocation(event, 'chennai')">Chennai</button>
+                    <button class="loc-tab-btn" onclick="openLocation(event, 'tindivanam')">Tindivanam</button>
+                    <button class="loc-tab-btn" onclick="openLocation(event, 'madurai')">Madurai</button>
+                    <button class="loc-tab-btn" onclick="openLocation(event, 'bangalore')">Bangalore</button>
+                </div>
+
+                <!-- TAB CONTENT: Chennai -->
+                <div id="chennai" class="loc-tab-content" style="display: block;">
+                    <div class="loc-card">
+                        <div class="loc-icon-wrapper">
+                            <svg class="loc-pin-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="loc-title">Chennai</h3>
+                            <p class="loc-address">
+                                Sundararajan Street, Mandaveli / Abhiramipuram,<br>
+                                Chennai, Tamil Nadu - 600028
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB CONTENT: Tindivanam -->
+                <div id="tindivanam" class="loc-tab-content">
+                    <div class="loc-card">
+                        <div class="loc-icon-wrapper">
+                            <svg class="loc-pin-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="loc-title">Tindivanam</h3>
+                            <p class="loc-address">
+                                No.9 Malligai st, Vasanthapuram,<br>
+                                Tindivanam, Tamil Nadu - 604001
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB CONTENT: Madurai -->
+                <div id="madurai" class="loc-tab-content">
+                    <div class="loc-card">
+                        <div class="loc-icon-wrapper">
+                            <svg class="loc-pin-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="loc-title">Madurai</h3>
+                            <p class="loc-address">
+                                [Insert Madurai Address Here],<br>
+                                Madurai, Tamil Nadu - [Pincode]
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB CONTENT: Bangalore -->
+                <div id="bangalore" class="loc-tab-content">
+                    <div class="loc-card">
+                        <div class="loc-icon-wrapper">
+                            <svg class="loc-pin-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="loc-title">Bangalore</h3>
+                            <p class="loc-address">
+                                [Insert Bangalore Address Here],<br>
+                                Bengaluru, Karnataka - [Pincode]
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </section>
     </main>
+
+    <!-- Global Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
+    
+    <!-- Tab Switching Logic specific to this page -->
+    <script>
+        function openLocation(evt, cityName) {
+            const tabcontent = document.getElementsByClassName("loc-tab-content");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            const tablinks = document.getElementsByClassName("loc-tab-btn");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
 </body>
 </html>

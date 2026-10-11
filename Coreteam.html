@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read expert financial insights, tax compliance updates, and corporate advisory articles from CS Hariharan & Co LLP.">
+    <title>Core Team | CS HARIHARAN & CO LLP</title>
+    <link rel="icon" type="image/png" href="/caindialogo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Global Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="page-header fade-up">
+            <h1 class="page-title">Partners</h1>
+            <p class="page-subtitle">The leadership driving our legacy of trust and precision.</p>
+        </div>
+
+        <section class="section-container">
+            <!-- The JavaScript Engine will inject all the flip cards into this empty grid -->
+            <div class="experts-grid" id="partners-grid"></div>
+        </section>
+    </main>
+
+    <!-- Global Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Global Logic -->
+    <script src="/script.js" defer></script>
+
+    <!-- Dynamic ES6 Render Engine & Flip Logic -->
+    <script>
+        // 1. Your Core Team Database
+        // To add or edit a partner, simply modify this array.
+        const partnersData = [
+            {
+                id: 'saravanan',
+                name: 'V. Saravanan',
+                role: 'Managing Partner, FCA',
+                imageSrc: '/saravanan.jpg',
+                description: "Leading the firm's strategic direction following our conversion to an LLP in 2021. With extensive expertise in scaling operations, he ensures top-tier statutory compliance across all corporate engagements."
+            },
+            {
+                id: 'seetharaman',
+                name: 'S. Seetharaman',
+                role: 'Senior Partner, FCA',
+                imageSrc: '/seetharaman.jpg',
+                description: "Providing foundational professional support and rigorous audit oversight. With decades of experience, he ensures our assurance practices maintain the highest ethical and professional standards."
+            },
+            {
+                id: 'hariharan',
+                name: 'C.S. Hariharan',
+                role: 'Partner',
+                imageSrc: '/hariharan.jpg',
+                description: "Mentoring modern start-ups and executing critical fundraising strategies in the Fintech sector. He combines legacy accounting knowledge with modern financial modeling."
+            },
+            {
+                id: 'praveen',
+                name: 'S. Praveen Kumar',
+                role: 'Partner',
+                imageSrc: '/praveen.jpg',
+                description: "Supporting complex financial reporting and compliance matters for a diverse client base. He specializes in intricate taxation structures and ensuring seamless regulatory filings."
+            },
+            {
+                id: 'gayathri',
+                name: 'Gayathri',
+                role: 'Partner',
+                imageSrc: '/gayathri.jpg',
+                description: "A dedicated professional delivering comprehensive financial and advisory solutions. Gayathri excels in overseeing statutory compliance, modernizing audit methodologies, and fostering long-term client growth."
+            },
+        ];
+
+        // 2. The ES6 Render Function
+        function renderPartners() {
+            const grid = document.getElementById('partners-grid');
+            
+            // Loop through the array and generate the HTML blocks
+            const htmlContent = partnersData.map((partner, index) => {
+                
+                // Calculates a staggered animation delay (1 to 4) so cards load in smoothly
+                const delayClass = `delay-${(index % 4) + 1}`;
+
+                return `
+                <div class="expert-card-wrapper fade-up ${delayClass}">
+                    <div class="expert-card-inner" id="card-${partner.id}">
+                        
+                        <!-- FRONT -->
+                        <div class="expert-card-front">
+                            <img src="${partner.imageSrc}" alt="${partner.name}" class="expert-avatar-img" onerror="this.src='/caindialogo1.webp'">
+                            <h3 class="expert-name">${partner.name}</h3>
+                            <p class="expert-role">${partner.role}</p>
+                            <button class="btn-card" onclick="toggleFlip('card-${partner.id}')">View Profile</button>
+                        </div>
+                        
+                        <!-- BACK -->
+                        <div class="expert-card-back">
+                            <h3 class="expert-name" style="font-size: 18px; margin-bottom: 4px; text-align: left; width: 100%;">${partner.name}</h3>
+                            <p class="expert-role" style="font-size: 12px; text-align: left; width: 100%; margin-bottom: 12px;">${partner.role}</p>
+                            <p class="value-card-desc">${partner.description}</p>
+                            <button class="btn-card btn-card-back" onclick="toggleFlip('card-${partner.id}')">Go Back</button>
+                        </div>
+                        
+                    </div>
+                </div>`;
+            }).join(''); // Connects all generated cards into one string
+
+            // Inject the string into the HTML file
+            grid.innerHTML = htmlContent;
+        }
+
+        // 3. The 3D Flip Logic
+        function toggleFlip(cardId) {
+            const card = document.getElementById(cardId);
+            if (card) {
+                card.classList.toggle('flipped');
+            }
+        }
+
+        // 4. Build the page on load
+        renderPartners();
+    </script>
+</body>
+</html>
