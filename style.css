@@ -299,23 +299,27 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .footer-link.contact-info { display: flex !important; align-items: flex-start !important; gap: 12px !important; }
 .footer-link.contact-info svg { width: 18px !important; height: 18px !important; fill: var(--color-primary); flex-shrink: 0 !important; margin-top: 2px; }
 .footer-link.contact-info span { display: block !important; line-height: 1.5 !important; }
-.footer-bottom { text-align: center; color: #94a3b8; font-size: 13.5px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+/* New Legal Bar Styling */
+.footer-bottom-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; max-width: 1280px; margin: 40px auto 0; padding: 20px 20px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.footer-legal { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; }
+.footer-legal a { color: #94a3b8; text-decoration: none; font-size: 13px; transition: color 0.3s; }
+.footer-legal a:hover { color: var(--color-primary); }
+.footer-copyright { font-size: 13px; color: #94a3b8; }
+.admin-trigger-link { color: inherit; text-decoration: none; cursor: pointer; }
 
 /* =========================================
    10. RESTORED CUSTOM HOVER EFFECTS & UTILITIES
    ========================================= */
-
-/* Restore the specific hover lift and glow for the Experts Grid */
 .experts-grid > * {
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .experts-grid > *:hover {
     transform: translateY(-8px);
-    box-shadow: 0px 20px 40px -10px rgba(30, 58, 138, 0.3); /* Premium blue glow */
+    box-shadow: 0px 20px 40px -10px rgba(30, 58, 138, 0.3);
 }
 
-/* Restore the standalone expert card styling that was purged */
 .expert-card { 
     text-align: center; 
     padding: clamp(24px, 4vw, 40px) 20px; 
@@ -344,7 +348,6 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
     font-weight: bold; 
 }
 
-/* Restore Service & Value Card dynamic hovers */
 .value-card, .service-card, .detailed-card {
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1); border-radius: var(--radius-lg); border: 1px solid var(--color-border); background-color: var(--color-white); padding: clamp(24px, 4vw, 32px); box-shadow: var(--shadow-sm);
 }
@@ -354,7 +357,6 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
     box-shadow: 0px 15px 30px -8px rgba(4, 120, 87, 0.3); 
 }
 
-/* Restore the specific Title Hover animations */
 .section-title, .section-tag {
     transition: text-shadow 0.3s ease, transform 0.3s ease;
 }
@@ -371,7 +373,6 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 /* =========================================
    11. CONTACT PAGE & LOCATIONS TAB SYSTEM
    ========================================= */
-/* Top Section: Main Contact Grid */
 .main-contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -405,7 +406,6 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
     }
 }
 
-/* Bottom Section: Location Tabs */
 .location-tabs {
     display: flex;
     justify-content: center;
@@ -491,7 +491,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .practice-card {
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
-    border-radius: 8px; /* Tasteful soft corners */
+    border-radius: 8px;
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -500,7 +500,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 }
 
 .practice-card:hover {
-    transform: translateY(-2px); /* Minimal, professional lift */
+    transform: translateY(-2px);
     border-color: var(--color-primary);
     box-shadow: var(--shadow-sm);
 }
@@ -536,4 +536,122 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
     color: var(--color-text-muted);
     line-height: 1.65;
     margin: 0;
+}
+/* =========================================
+   14. EXECUTIVE BIO MODAL
+   ========================================= */
+.bio-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.bio-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.bio-modal-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.bio-modal-overlay.active .bio-modal-card {
+    transform: translateY(0);
+}
+
+.bio-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+}
+
+.bio-close-btn:hover {
+    color: var(--color-dark);
+}
+
+.bio-modal-left {
+    flex: 0 0 300px;
+    background: var(--color-light);
+    border-right: 1px solid var(--color-border);
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bio-modal-left img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-white);
+    box-shadow: var(--shadow-sm);
+}
+
+.bio-modal-right {
+    padding: 40px 32px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.bio-paragraph {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.bio-paragraph:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .bio-modal-card {
+        flex-direction: column;
+    }
+    .bio-modal-left {
+        flex: none;
+        padding: 24px;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+    .bio-modal-left img {
+        width: 120px;
+        height: 120px;
+    }
+    .bio-modal-right {
+        padding: 24px;
+    }
 }
