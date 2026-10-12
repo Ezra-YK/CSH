@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Read expert financial insights, tax compliance updates, and corporate advisory articles from CS Hariharan & Co LLP.">
+    <meta name="description" content="Meet the leadership driving CS Hariharan & Co LLP.">
     <title>Core Team | CS HARIHARAN & CO LLP</title>
     <link rel="icon" type="image/png" href="/caindialogo.jpg">
     <link rel="stylesheet" href="style.css">
@@ -19,9 +19,24 @@
         </div>
 
         <section class="section-container">
-            <!-- The JavaScript Engine will inject all the flip cards into this empty grid -->
+            <!-- The JavaScript Engine will inject the static cards here -->
             <div class="experts-grid" id="partners-grid"></div>
         </section>
+
+        <!-- Executive Bio Modal (Hidden by Default) -->
+        <div id="partner-modal" class="bio-modal-overlay">
+            <div class="bio-modal-card">
+                <button id="partner-close" class="bio-close-btn">&times;</button>
+                <div class="bio-modal-left">
+                    <img id="modal-partner-img" src="" alt="Partner">
+                </div>
+                <div class="bio-modal-right">
+                    <h2 id="modal-partner-name" style="color: var(--color-secondary); font-size: 24px; font-weight: 800; margin-bottom: 4px;"></h2>
+                    <p id="modal-partner-role" style="color: var(--color-primary); font-weight: 700; font-size: 14.5px; margin-bottom: 24px; border-bottom: 1px solid var(--color-border); padding-bottom: 16px;"></p>
+                    <div id="modal-partner-bio"></div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Global Footer Placeholder -->
@@ -30,95 +45,101 @@
     <!-- Global Logic -->
     <script src="/script.js" defer></script>
 
-    <!-- Dynamic ES6 Render Engine & Flip Logic -->
+    <!-- Dynamic ES6 Render Engine & Modal Logic -->
     <script>
-        // 1. Your Core Team Database
-        // To add or edit a partner, simply modify this array.
+        // 1. Core Team Database
         const partnersData = [
             {
                 id: 'saravanan',
                 name: 'V. Saravanan',
                 role: 'Managing Partner, FCA',
                 imageSrc: '/saravanan.jpg',
-                description: "Leading the firm's strategic direction following our conversion to an LLP in 2021. With extensive expertise in scaling operations, he ensures top-tier statutory compliance across all corporate engagements."
+                fullBio: `<p class="bio-paragraph">Leading the firm's strategic direction following our conversion to an LLP in 2021. With extensive expertise in scaling operations, he ensures top-tier statutory compliance across all corporate engagements.</p>`
             },
             {
                 id: 'seetharaman',
                 name: 'S. Seetharaman',
                 role: 'Senior Partner, FCA',
                 imageSrc: '/seetharaman.jpg',
-                description: "Providing foundational professional support and rigorous audit oversight. With decades of experience, he ensures our assurance practices maintain the highest ethical and professional standards."
+                fullBio: `<p class="bio-paragraph">Providing foundational professional support and rigorous audit oversight. With decades of experience, he ensures our assurance practices maintain the highest ethical and professional standards.</p>`
             },
             {
                 id: 'hariharan',
                 name: 'C.S. Hariharan',
-                role: 'Partner, FCA',
+                role: 'Partner',
                 imageSrc: '/hariharan.jpg',
-                description: "Mentoring modern start-ups and executing critical fundraising strategies in the Fintech sector. He combines legacy accounting knowledge with modern financial modeling."
+                fullBio: `<p class="bio-paragraph">Mentoring modern start-ups and executing critical fundraising strategies in the Fintech sector. He combines legacy accounting knowledge with modern financial modeling.</p>`
             },
             {
                 id: 'praveen',
                 name: 'S. Praveen Kumar',
-                role: 'Partner, ACA',
+                role: 'Partner',
                 imageSrc: '/praveen.jpg',
-                description: "Praveen kumar is an associate member of the Institute of Chartered Accountants of India (ICAI), having successfully cleared the prestigious Chartered Accountancy Final Examination in 2024. He brings expertise in diverse domains, including Bank Audits, Statutory Corporate Audits, Internal audits, Direct Taxes, Indirect Taxes Laws, Corporate laws and other regulatory requirements.As a forward-thinker and advocate of innovation, he firmly believes in the transformative power of automation, often quoting,You're either the one that creates the automation, or you're getting automated."' Beyond the professional sphere, he is a passionate sports enthusiast and an avid trekker who finds joy in exploring rugged mountain trails, embodying a spirit of resilience and adventure in all pursuits."
+                fullBio: `
+                    <p class="bio-paragraph">Praveen kumar is an associate member of the Institute of Chartered Accountants of India (ICAI), having successfully cleared the prestigious Chartered Accountancy Final Examination in 2024. He brings expertise in diverse domains, including Bank Audits, Statutory Corporate Audits, Internal audits, Direct Taxes, Indirect Taxes Laws, Corporate laws and other regulatory requirements.</p>
+                    <p class="bio-paragraph">As a forward-thinker and advocate of innovation, he firmly believes in the transformative power of automation, often quoting, "You're either the one that creates the automation, or you're getting automated." Beyond the professional sphere, he is a passionate sports enthusiast and an avid trekker who finds joy in exploring rugged mountain trails, embodying a spirit of resilience and adventure in all pursuits.</p>
+                `
             },
-            // {
-            //     id: 'gayathri',
-            //     name: 'Gayathri',
-            //     role: 'Partner',
-            //     imageSrc: '/gayathri.jpg',
-            //     description: "A dedicated professional delivering comprehensive financial and advisory solutions. Gayathri excels in overseeing statutory compliance, modernizing audit methodologies, and fostering long-term client growth."
-            // },
+            {
+                id: 'gayathri',
+                name: 'Gayathri',
+                role: 'Partner',
+                imageSrc: '/gayathri.jpg',
+                fullBio: `<p class="bio-paragraph">A dedicated professional delivering comprehensive financial and advisory solutions. Gayathri excels in overseeing statutory compliance, modernizing audit methodologies, and fostering long-term client growth.</p>`
+            }
         ];
 
-        // 2. The ES6 Render Function
+        // 2. Render Static Cards
         function renderPartners() {
             const grid = document.getElementById('partners-grid');
             
-            // Loop through the array and generate the HTML blocks
             const htmlContent = partnersData.map((partner, index) => {
-                
-                // Calculates a staggered animation delay (1 to 4) so cards load in smoothly
                 const delayClass = `delay-${(index % 4) + 1}`;
 
                 return `
-                <div class="expert-card-wrapper fade-up ${delayClass}">
-                    <div class="expert-card-inner" id="card-${partner.id}">
-                        
-                        <!-- FRONT -->
-                        <div class="expert-card-front">
-                            <img src="${partner.imageSrc}" alt="${partner.name}" class="expert-avatar-img" onerror="this.src='/caindialogo1.webp'">
-                            <h3 class="expert-name">${partner.name}</h3>
-                            <p class="expert-role">${partner.role}</p>
-                            <button class="btn-card" onclick="toggleFlip('card-${partner.id}')">View Profile</button>
-                        </div>
-                        
-                        <!-- BACK -->
-                        <div class="expert-card-back">
-                            <h3 class="expert-name" style="font-size: 18px; margin-bottom: 4px; text-align: left; width: 100%;">${partner.name}</h3>
-                            <p class="expert-role" style="font-size: 12px; text-align: left; width: 100%; margin-bottom: 12px;">${partner.role}</p>
-                            <p class="value-card-desc">${partner.description}</p>
-                            <button class="btn-card btn-card-back" onclick="toggleFlip('card-${partner.id}')">Go Back</button>
-                        </div>
-                        
-                    </div>
+                <div class="expert-card fade-up ${delayClass}">
+                    <img src="${partner.imageSrc}" alt="${partner.name}" class="expert-avatar-img" onerror="this.src='/caindialogo1.webp'" style="margin-bottom: 16px;">
+                    <h3 class="expert-name" style="font-size: 18px; font-weight: 800; color: var(--color-secondary); margin-bottom: 4px;">${partner.name}</h3>
+                    <p class="expert-role" style="font-size: 14.5px; font-weight: 700; color: var(--color-primary); margin-bottom: 24px;">${partner.role}</p>
+                    <button class="btn-card" onclick="openBioModal('${partner.id}')" style="width: 100%;">View Profile</button>
                 </div>`;
-            }).join(''); // Connects all generated cards into one string
+            }).join('');
 
-            // Inject the string into the HTML file
             grid.innerHTML = htmlContent;
         }
 
-        // 3. The 3D Flip Logic
-        function toggleFlip(cardId) {
-            const card = document.getElementById(cardId);
-            if (card) {
-                card.classList.toggle('flipped');
+        // 3. Modal Control Logic
+        const partnerModal = document.getElementById('partner-modal');
+        const partnerClose = document.getElementById('partner-close');
+
+        function openBioModal(partnerId) {
+            const partner = partnersData.find(p => p.id === partnerId);
+            if (partner) {
+                document.getElementById('modal-partner-img').src = partner.imageSrc || '/caindialogo1.webp';
+                // Fallback image handler for the modal
+                document.getElementById('modal-partner-img').onerror = function() { this.src = '/caindialogo1.webp'; };
+                
+                document.getElementById('modal-partner-name').textContent = partner.name;
+                document.getElementById('modal-partner-role').textContent = partner.role;
+                document.getElementById('modal-partner-bio').innerHTML = partner.fullBio;
+                
+                partnerModal.classList.add('active');
             }
         }
 
-        // 4. Build the page on load
+        if (partnerClose && partnerModal) {
+            partnerClose.addEventListener('click', () => {
+                partnerModal.classList.remove('active');
+            });
+
+            partnerModal.addEventListener('click', (e) => {
+                if (e.target === partnerModal) {
+                    partnerModal.classList.remove('active');
+                }
+            });
+        }
+
+        // 4. Initialize
         renderPartners();
     </script>
 </body>
