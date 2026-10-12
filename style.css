@@ -13,8 +13,8 @@
     --color-text-light: #475569;
     --color-success-bg: #ecfdf5;
     --color-info-bg: #f1f5f9;
-    --color-white: #ffffff;
-    --font-body: "Plus Jakarta Sans", -apple-system, sans-serif;
+    --color-white: #fcfcfc;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     
     --badge-danger-bg: #fee2e2;
     --badge-danger-text: #dc2626;
@@ -300,6 +300,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
 .footer-link.contact-info svg { width: 18px !important; height: 18px !important; fill: var(--color-primary); flex-shrink: 0 !important; margin-top: 2px; }
 .footer-link.contact-info span { display: block !important; line-height: 1.5 !important; }
 .footer-bottom { text-align: center; color: #94a3b8; font-size: 13.5px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
 /* =========================================
    10. RESTORED CUSTOM HOVER EFFECTS & UTILITIES
    ========================================= */
@@ -314,10 +315,6 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
     box-shadow: 0px 20px 40px -10px rgba(30, 58, 138, 0.3); /* Premium blue glow */
 }
 
-.principles-grid > *:hover {
-    transform: translateY(-8px);
-    box-shadow: 0px 20px 40px -10px rgba(8, 70, 242, 0.8); /* Premium blue glow */
-}
 /* Restore the standalone expert card styling that was purged */
 .expert-card { 
     text-align: center; 
@@ -370,6 +367,7 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
     text-shadow: 2px 4px 10px rgba(4, 120, 87, 0.5);
     transform: translateY(-1px);
 }
+
 /* =========================================
    11. CONTACT PAGE & LOCATIONS TAB SYSTEM
    ========================================= */
@@ -485,4 +483,57 @@ body { font-family: var(--font-body); color: var(--color-dark); line-height: 1.6
     font-size: 14.5px;
     color: var(--color-text-muted);
     line-height: 1.8;
+}
+
+/* =========================================
+   12. AREAS OF PRACTICE (FACTUAL UI)
+   ========================================= */
+.practice-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 8px; /* Tasteful soft corners */
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.practice-card:hover {
+    transform: translateY(-2px); /* Minimal, professional lift */
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.practice-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 16px;
+}
+
+.practice-num {
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--color-primary);
+    font-weight: 700;
+    background: var(--color-info-bg);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.practice-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.practice-desc {
+    font-size: 14.5px;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    margin: 0;
 }
